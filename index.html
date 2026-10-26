@@ -394,6 +394,46 @@ a.press-item:active{transform:scale(.985)}
 #sheet-stay[data-dest="sp"] .door-open{background:#1db954;color:#04160b}
 #sheet-stay[data-dest="am"] .door-open{background:#c81e3a}
 #sheet-stay[data-dest="dc"] .door-open{background:#191919}
+/* ============ THE VALET — the agent layer: a guide of the house (§19) ============ */
+.valet-creed{flex:none;padding:10px 18px;font-size:12.5px;line-height:1.5;color:var(--ink-soft);
+  background:linear-gradient(180deg,#fffdf7,var(--paper));box-shadow:0 .5px 0 rgba(138,106,36,.3)}
+.valet-roles{flex:none;display:flex;gap:7px;padding:11px 18px 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.valet-roles::-webkit-scrollbar{display:none}
+.role-chip{flex:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#7d601f;padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(138,106,36,.55);background:#fffdf7}
+.role-chip.on{color:#2a1d11;background:linear-gradient(160deg,#e9cd82,#c9a24b);
+  box-shadow:inset 0 0 0 1px rgba(138,106,36,.4),0 4px 12px rgba(138,106,36,.3)}
+.valet-log{flex:1;overflow-y:auto;padding:14px 18px 6px;-webkit-overflow-scrolling:touch}
+.v-msg{max-width:88%;margin-bottom:10px;font-size:15px;line-height:1.55}
+.v-msg.bot{background:#fffdf7;color:#3d2c1a;border-radius:16px;border-top-left-radius:5px;padding:11px 13px;
+  box-shadow:0 1px 0 rgba(138,106,36,.22),0 8px 20px rgba(42,29,17,.05)}
+.v-msg.me{margin-left:auto;background:#2a1d11;color:var(--cream);border-radius:16px;border-top-right-radius:5px;padding:11px 13px}
+.v-msg .v-head{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:4px}
+.valet-quick{flex:none;display:flex;gap:7px;padding:8px 18px 2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.valet-quick::-webkit-scrollbar{display:none}
+.qr-btn{flex:none;font-size:13.5px;font-weight:600;color:#7d601f;background:rgba(201,162,75,.14);
+  padding:9px 13px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(138,106,36,.4)}
+.qr-btn:active{transform:scale(.96)}
+.valet-compose{flex:none;display:flex;gap:9px;padding:10px 18px calc(12px + env(safe-area-inset-bottom));
+  background:var(--paper);box-shadow:0 -.5px 0 rgba(138,106,36,.3)}
+.valet-compose input{flex:1;border:1px solid rgba(138,106,36,.35);border-radius:999px;background:#fffdf7;
+  padding:12px 15px;font:inherit;font-size:15px;color:var(--ink)}
+.valet-compose input:focus{outline:2px solid rgba(201,162,75,.55);border-color:transparent}
+.valet-send{flex:none;padding:12px 18px;border-radius:999px;font-size:15px;font-weight:600;color:#fffaf0;
+  background:linear-gradient(160deg,#d9b45c,#a87f27);box-shadow:0 8px 20px rgba(138,106,36,.35)}
+/* the valet bell — home screen, seated above the dock */
+.valet-bell{position:absolute;right:16px;bottom:calc(112px + env(safe-area-inset-bottom));z-index:6;
+  display:flex;flex-direction:column;align-items:center;gap:5px}
+.valet-bell .bell{width:57px;height:57px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg, rgba(255,250,240,.16), rgba(255,250,240,.05) 44%, rgba(201,162,75,.10)), rgba(20,13,8,.55);
+  backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);
+  box-shadow:inset 0 1px 0 rgba(255,250,240,.48), inset 0 0 0 .5px rgba(255,250,240,.22), 0 14px 30px rgba(0,0,0,.4);
+  transition:transform .15s var(--ease)}
+.valet-bell:active .bell{transform:scale(.93)}
+.valet-bell .lbl{font-size:11.5px;font-weight:500;color:#fffaf0;text-shadow:0 1px 8px rgba(10,5,2,.75)}
+/* the lock-face invitation — one quiet line in the hint stack */
+.hint-valet{font-size:10.5px;font-weight:700;letter-spacing:.26em;padding-left:.26em;
+  text-transform:uppercase;color:var(--gold-soft);pointer-events:auto}
 @media (prefers-reduced-motion: reduce){
   *{animation:none!important;transition-duration:.01s!important}
 }
@@ -518,6 +558,10 @@ a.press-item:active{transform:scale(.985)}
         <span class="lbl">Mail</span>
       </button>
     </div>
+    <button class="valet-bell" id="valetBell" data-open="valet" aria-label="Ask the Valet">
+      <span class="bell"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true"><path d="M12 3.5a5.4 5.4 0 0 1 5.4 5.4c0 3.4 1 4.9 1.9 6H5.1c.9-1.1 1.9-2.6 1.9-6A5.4 5.4 0 0 1 12 3.5z" stroke="#e3c878" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.8 18.4a2.3 2.3 0 0 0 4.4 0" stroke="#e3c878" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      <span class="lbl">Valet</span>
+    </button>
   </section>
 
   <!-- ================= LOCK SCREEN ================= -->
@@ -554,6 +598,7 @@ a.press-item:active{transform:scale(.985)}
     <div class="unlock-hint" id="unlockHint">
       <span class="hint-line" aria-hidden="true"></span>
       <span class="hint-text">Swipe up to open</span>
+      <button class="hint-valet" id="lockValet">Meet the Valet</button>
       <span class="home-bar"></span>
     </div>
   </section>
@@ -739,6 +784,19 @@ a.press-item:active{transform:scale(.985)}
     </div>
   </section>
 
+  <!-- ================= THE VALET — the agent layer: a guide of the house ================= -->
+  <section class="sheet" id="sheet-valet" aria-label="The Valet">
+    <div class="sheet-bar"><div class="sheet-title">The Valet</div><button class="done-btn" data-close>Done</button></div>
+    <div class="valet-creed">A guide built into this OS — it knows this house; it is not Aaniyah.</div>
+    <div class="valet-roles" id="valetRoles" aria-label="Valet roles"></div>
+    <div class="valet-log" id="valetLog" aria-live="polite"></div>
+    <div class="valet-quick" id="valetQuick"></div>
+    <div class="valet-compose">
+      <input id="valetInput" type="text" placeholder="Ask the Valet…" aria-label="Ask the Valet" autocomplete="off"/>
+      <button class="valet-send" id="valetSend">Send</button>
+    </div>
+  </section>
+
   <!-- ================= STAY — the in-app door (no door throws the visitor out) ================= -->
   <section class="sheet" id="sheet-stay" aria-label="Door">
     <div class="sheet-bar stay-bar"><div class="sheet-title" id="stayTitle">Door</div><button class="done-btn" data-close>Done</button></div>
@@ -816,13 +874,15 @@ a.press-item:active{transform:scale(.985)}
     feed.innerHTML = notes.map(function(n, i){
       return '<div class="note-card"><div class="n-body">' + esc(n.body) + '</div>' +
              '<div class="n-meta"><span>' + esc(n.name || 'A friend of the music') + '</span>' +
-             '<span>' + (n.seed ? 'pinned' : 'just now') + '</span></div>' +
+             '<span>' + (n.kind === 'critique' ? 'CRITIQUE' : (n.seed ? 'pinned' : 'just now')) + '</span></div>' +
              '<div class="note-foot"><button class="heart-btn' + (n.hearted ? ' on' : '') +
              '" data-heart="' + i + '" aria-pressed="' + (n.hearted ? 'true' : 'false') +
              '" aria-label="Heart this note"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path d="' +
              HEART_PATH + '"/></svg><span class="heart-count">' + (n.hearts || 0) + '</span></button></div></div>';
     }).join('');
-    var newest = notes[0];
+    /* the lock face greets with the newest note — a critique is record, not greeting */
+    var newest = null;
+    for (var gi = 0; gi < notes.length; gi++) { if (notes[gi].kind !== 'critique') { newest = notes[gi]; break; } }
     if (newest) {
       document.getElementById('lockNoteBody').textContent = newest.body;
       document.getElementById('lockNoteName').textContent = newest.name || '';
@@ -939,31 +999,368 @@ a.press-item:active{transform:scale(.985)}
     var url = a.getAttribute('href');
     staySheet.setAttribute('data-dest', a.getAttribute('data-dest') || '');
     staySheet.classList.toggle('mode-embed', mode === 'embed');
-    document.getElementById('stayDest').textContent = a.getAttribute('data-destname') || '';
-    var st = document.getElementById('stayTitle');
-    st.innerHTML = a.getAttribute('data-title') || '';
-    var meta = document.getElementById('stayMeta'), mt = a.getAttribute('data-metatitle');
-    if (mt) { meta.innerHTML = mt; meta.style.display = ''; } else { meta.style.display = 'none'; }
-    document.getElementById('stayOpen').setAttribute('href', url);
-    var wrap = document.getElementById('stayWrap'), frame = document.getElementById('stayFrame');
-    var card = document.getElementById('stayCard');
-    wrap.style.display = 'none'; card.style.display = 'none';
-    if (mode === 'embed') {
-      wrap.style.display = '';
-      frame.setAttribute('src', a.getAttribute('data-embed') || url);
-    } else if (mode === 'frame') {
-      wrap.style.display = '';
-      frame.setAttribute('src', url);
+    document.getElementById('stayTitle').textContent = a.getAttribute('data-title') || 'Door';
+    var wrap = document.getElementById('stayWrap'),
+        frame = document.getElementById('stayFrame'),
+        cardBody = document.getElementById('stayCardBody');
+    if (mode === 'card') {
+      /* platforms that forbid embedding: the styled door card, OS framed around it */
+      wrap.hidden = true; cardBody.hidden = false;
+      document.getElementById('doorName').textContent = a.getAttribute('data-destname') || '';
+      document.getElementById('doorLine').textContent = a.getAttribute('data-line') || '';
+      var open = document.getElementById('doorOpen');
+      open.setAttribute('href', url);
+      open.textContent = 'Open in ' + (a.getAttribute('data-destname') || 'the app');
     } else {
-      card.style.display = '';
-      document.getElementById('stayCardBody').textContent = a.getAttribute('data-line') || '';
+      cardBody.hidden = true; wrap.hidden = false;
+      frame.setAttribute('src', mode === 'embed' ? (a.getAttribute('data-embed') || url) : url);
+      document.getElementById('stayMetaTitle').textContent =
+        a.getAttribute('data-metatitle') || a.getAttribute('data-title') || '';
+      document.getElementById('stayMetaSub').textContent = a.getAttribute('data-line') || '';
+      document.getElementById('stayOpenLink').setAttribute('href', url);
+      document.getElementById('stayOpenDest').textContent = a.getAttribute('data-destname') || '';
     }
     staySheet.classList.add('open');
   }
+
   var doors = document.querySelectorAll('[data-door]');
   for (var d = 0; d < doors.length; d++) {
     doors[d].addEventListener('click', function(e){ e.preventDefault(); openDoor(this); });
   }
+
+  /* ================================================================
+     THE VALET — the agent layer of this house (§19).
+     A local, rule-based guide. Its ground truth is the knowledge
+     cards below, drawn from this instance's CONFIG (works · doors ·
+     wardrobe · rooms). Typed input + quick replies; a question with
+     no card falls back to the right room — it invents nothing.
+
+     What it is not: it is not Aaniyah, and it never speaks as her.
+     It quotes no prices and makes no promises; money and terms route
+     to the human door (Mail). It assigns the artist nothing.
+
+     LIVE MODEL HOOK — prepared seat, DISABLED (not a connection):
+     a live model, if the desk ever seats one under GOVERNANCE,
+     plugs in at valetAnswer() — the single point where a reply is
+     chosen — receiving the visitor's words, the active role, and
+     these same knowledge cards as its only ground truth, under the
+     same guardrails. Until that seat is filled, VALET_LIVE stays
+     null and the local engine answers. Nothing here calls out;
+     no key exists in this page.
+     ================================================================ */
+  var VALET_LIVE = null; /* the hook above — null = the local engine only */
+
+  var V_WORKS = [
+    { id:'hiyw', title:'Have It Your Way', keys:['have it your way','hiyw'],
+      line:'“Have It Your Way” — the Official Video. It plays right here, inside the OS; nothing opens away.',
+      sel:'a[data-door="embed"][data-title="Have It Your Way"]' },
+    { id:'snug', title:'Live at Snug Harbor', keys:['snug harbor','snug','in session'],
+      line:'“Live at Snug Harbor” — Aaniyah In Session, her live performance film, playing here inside the OS.',
+      sel:'a[data-door="embed"][data-title="Live at Snug Harbor"]' },
+    { id:'los', title:'Last One Standing', keys:['last one standing','last one'],
+      line:'“Last One Standing” — the video lives on her YouTube channel. Its door is a card: the channel opens in YouTube, and this screen stays right here behind it.',
+      sel:'#losWidget' },
+    { id:'dexp', title:'Don’t Explain', keys:['don’t explain',"don't explain",'dont explain'],
+      line:'“Don’t Explain” — a single, at her own site, framed right here inside the OS.',
+      sel:'a[data-door="frame"][data-title="Don’t Explain"]' },
+    { id:'breathe', title:'Breathe', keys:['breathe'],
+      line:'“Breathe” — her debut single, at her own site, framed right here inside the OS.',
+      sel:'a[data-door="frame"][data-title="Breathe"]' },
+    { id:'strange', title:'Strange Fruit', keys:['strange fruit','sofar'],
+      line:'“Strange Fruit” — her Sofar Sounds Juneteenth performance: Sunnies, Uptown New Orleans, June 19, 2026, with Yah El on keyboards. Its room here holds the performance as an exhibit.',
+      sheet:'sofar' }
+  ];
+
+  var V_DOORS = [
+    { id:'yt', name:'YouTube', keys:['youtube','channel'],
+      line:'YouTube — her channel: the films, the performances, the session as it grows. It opens in YouTube; the OS stays right here.',
+      sel:'a.app[href="https://www.youtube.com/@aaniyahanderson"]' },
+    { id:'ig', name:'Instagram', keys:['instagram'],
+      line:'Instagram — @aaniyahanderson. It opens in its own app; the OS stays right here behind it.',
+      sel:'a.app[href="https://www.instagram.com/aaniyahanderson"]' },
+    { id:'tt', name:'TikTok', keys:['tiktok'],
+      line:'TikTok — @aaniyahanderson. It opens in its own app; the OS stays right here behind it.',
+      sel:'a.app[href="https://www.tiktok.com/@aaniyahanderson"]' },
+    { id:'sp', name:'Spotify', keys:['spotify'],
+      line:'Spotify — her artist page, playing here inside the OS.',
+      sel:'a.app[href="https://open.spotify.com/artist/3Ip1c8ekjMvUlK6u4VAyue"]' },
+    { id:'am', name:'Apple Music', keys:['apple music','apple'],
+      line:'Apple Music — her page, in Apple’s house. It opens in its own app from the card.',
+      sel:'a.app[href="https://music.apple.com/us/artist/aaniyah/1771416878"]' },
+    { id:'dc', name:'Discogs', keys:['discogs'],
+      line:'Discogs — the record of the records.',
+      sel:'a.app[href="https://www.discogs.com/artist/18368169-Aaniyah"]' },
+    { id:'fan', name:'Aaniyahlators', keys:['aaniyahlators','fan club','fans','fanbase'],
+      line:'Aaniyahlators — the official fan base, @annihilators.usa on Instagram. It opens in its own app; the OS stays right here.',
+      sel:'a.app[href="https://www.instagram.com/annihilators.usa"]' },
+    { id:'site', name:'Her site', keys:['website','her site','aaniyahinsession','catalog'],
+      line:'Her site — aaniyahinsession.com, framed right here inside the OS.',
+      sel:'.dock a.app[href="https://aaniyahinsession.com"]' }
+  ];
+
+  function vQuickWorks(){
+    return V_WORKS.map(function(w){
+      return { label:w.title, act:{ t:'work', id:w.id } };
+    });
+  }
+  function vQuickDoors(){
+    var q = V_DOORS.map(function(d){
+      return { label:d.name, act:{ t:'door', id:d.id } };
+    });
+    q.push({ label:'Press', act:{ t:'sheet', id:'press', line:'The press room — seven pieces from Repeatable Press, each one opening here, inside the OS.' } });
+    return q;
+  }
+
+  var V_ROLES = [
+    { id:'greeter', label:'Greeter',
+      greet:'Welcome in. I’m the Valet of this house — I keep the rooms, the doors, and the way around. Ask me for the music, the wardrobe story, the guestbook, or any door, and I’ll take you there myself.',
+      quick:function(){ return [
+        { label:'Play the music', act:{ t:'role', id:'music' } },
+        { label:'Leave a note', act:{ t:'sheet', id:'notes-board', line:'The guestbook — write it there, and it joins the testimonials.' } },
+        { label:'The wardrobe story', act:{ t:'role', id:'treasury' } },
+        { label:'All the doors', act:{ t:'role', id:'doors' } }
+      ]; } },
+    { id:'music', label:'Music',
+      greet:'The music room, as it stands: “Have It Your Way” and “Live at Snug Harbor” play inside the OS. “Last One Standing” waits at its YouTube door. “Don’t Explain” and “Breathe” live at her site, framed here. “Strange Fruit” keeps its Sofar room. Name one — or tap it — and I’ll take you.',
+      quick:vQuickWorks },
+    { id:'guestbook', label:'Guestbook',
+      greet:'The guestbook. Kind words live here: leave a note and it joins the testimonials, and every note carries a heart — tap it, and it fills gold. Your notes stay private: they live on your device, and nowhere else. Shall I walk you to it?',
+      quick:function(){ return [
+        { label:'Leave a note', act:{ t:'sheet', id:'notes-board', line:'The guestbook — write it there, and it joins the testimonials.' } },
+        { label:'Heart a note', act:{ t:'sheet', id:'notes-board', line:'The guestbook — every note carries its heart at its foot. Tap it, and it fills gold.' } },
+        { label:'Offer a critique instead', act:{ t:'role', id:'critique' } }
+      ]; } },
+    { id:'treasury', label:'Treasury',
+      greet:'The treasury. The house record holds her wardrobe as historic, and treasury — kept the way the music is kept. The piece this page wears is the “Last One Standing” look: a white headwrap and veil, gold glitter eye art, gold teardrop earrings, a pink-and-gold braided necklace. It hangs in Photos, and on the home-screen film.',
+      quick:function(){ return [
+        { label:'See the photographs', act:{ t:'sheet', id:'photos', line:'Photos — the frames of the works, the look among them.' } },
+        { label:'The home-screen film', act:{ t:'sheet', id:'videos', line:'Videos — the “Last One Standing” frame hangs at the top.' } },
+        { label:'Hear the music', act:{ t:'role', id:'music' } }
+      ]; } },
+    { id:'doors', label:'Doors',
+      greet:'Every door in the house, and where it lands: Spotify plays inside. Her site and the press open framed, right here. YouTube, Instagram, TikTok, Apple Music, and Discogs stand as door cards — their own houses take it from there, and this screen stays behind them. Name a door, or tap one.',
+      quick:vQuickDoors },
+    { id:'inquiry', label:'Inquiry',
+      greet:'For licensing, booking, and anything with terms: that road runs to the label, through Mail — sales@leasethebox.com. The Valet quotes no prices and makes no promises; terms are quoted by scope, by the label itself. And I collect nothing here — your message travels by your own mail app.',
+      quick:function(){ return [
+        { label:'Write to the label', act:{ t:'sheet', id:'mail', line:'The Mail room — your own mail app carries it to the label.' } },
+        { label:'See the catalog', act:{ t:'door', id:'site' } }
+      ]; } },
+    { id:'critique', label:'Critique',
+      greet:'This is her seat: critique and open dialogue. Speak plainly — what landed, what didn’t, what you hear in it. Write it here, and it is kept with the guestbook on this device, marked as critique, for her ears in her time.',
+      quick:function(){ return [
+        { label:'Write it now', act:{ t:'arm' } },
+        { label:'Leave a kind note instead', act:{ t:'sheet', id:'notes-board', line:'The guestbook — kind words live there.' } }
+      ]; } }
+  ];
+
+  var vRole = 'greeter', vArmed = false, vGreeted = false, vQuick = [];
+  var vLogEl = document.getElementById('valetLog'),
+      vRolesEl = document.getElementById('valetRoles'),
+      vQuickEl = document.getElementById('valetQuick'),
+      vInput = document.getElementById('valetInput'),
+      vMsgs = [];
+
+  function vRoleById(id){ for (var i = 0; i < V_ROLES.length; i++) if (V_ROLES[i].id === id) return V_ROLES[i]; return V_ROLES[0]; }
+  function vWorkById(id){ for (var i = 0; i < V_WORKS.length; i++) if (V_WORKS[i].id === id) return V_WORKS[i]; return null; }
+  function vDoorById(id){ for (var i = 0; i < V_DOORS.length; i++) if (V_DOORS[i].id === id) return V_DOORS[i]; return null; }
+
+  function renderChips(){
+    vRolesEl.innerHTML = V_ROLES.map(function(r){
+      return '<button class="role-chip' + (r.id === vRole ? ' on' : '') + '" data-vrole="' + r.id + '">' + r.label + '</button>';
+    }).join('');
+  }
+  function renderQuick(){
+    vQuickEl.innerHTML = vQuick.map(function(q, i){
+      return '<button class="qr-btn" data-vq="' + i + '">' + esc(q.label) + '</button>';
+    }).join('');
+  }
+  function renderLog(){
+    vLogEl.innerHTML = vMsgs.map(function(m){
+      return m.who === 'bot'
+        ? '<div class="v-msg bot"><div class="v-head">The Valet</div>' + esc(m.text) + '</div>'
+        : '<div class="v-msg me">' + esc(m.text) + '</div>';
+    }).join('');
+    vLogEl.scrollTop = vLogEl.scrollHeight;
+  }
+  function valetSay(text, quick){
+    vMsgs.push({ who:'bot', text:text });
+    if (quick) vQuick = quick;
+    renderLog(); renderQuick();
+  }
+  function userSay(text){ vMsgs.push({ who:'me', text:text }); renderLog(); }
+
+  function goSheet(id){ closeSheets(); openSheet(id); }
+  function goDoor(sel){
+    var a = sel ? document.querySelector(sel) : null;
+    if (!a) return false;
+    closeSheets(); openDoor(a); return true;
+  }
+  function syncCompose(){
+    vInput.placeholder = vArmed ? 'Write your critique for Aaniyah…' : 'Ask the Valet…';
+  }
+  function setRole(id, announce){
+    vRole = id;
+    if (id !== 'critique' && vArmed) { vArmed = false; syncCompose(); }
+    renderChips();
+    var r = vRoleById(id);
+    if (announce) valetSay(r.greet, r.quick());
+    else { vQuick = r.quick(); renderQuick(); }
+  }
+  function workAnswer(w, route){
+    valetSay(w.line, vRoleById('music').quick());
+    if (route) {
+      if (w.sel) goDoor(w.sel);
+      else if (w.sheet) goSheet(w.sheet);
+    }
+  }
+  function doorAnswer(d, route){
+    valetSay(d.line, vRoleById('doors').quick());
+    if (route) goDoor(d.sel);
+  }
+
+  function runAction(act){
+    if (!act) return;
+    if (act.t === 'role') setRole(act.id, true);
+    else if (act.t === 'sheet') { if (act.line) valetSay(act.line, vQuick); goSheet(act.id); }
+    else if (act.t === 'work') { var w = vWorkById(act.id); if (w) workAnswer(w, true); }
+    else if (act.t === 'door') { var d = vDoorById(act.id); if (d) doorAnswer(d, true); }
+    else if (act.t === 'arm') {
+      vArmed = true; syncCompose();
+      valetSay('The floor is yours — write it in the line below, and Send keeps it.', [
+        { label:'Never mind — back to the rooms', act:{ t:'role', id:'greeter' } }
+      ]);
+      if (vInput.focus) vInput.focus();
+    }
+  }
+
+  vRolesEl.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('[data-vrole]') : null;
+    if (b) setRole(b.getAttribute('data-vrole'), true);
+  });
+  vQuickEl.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('[data-vq]') : null;
+    if (!b) return;
+    var q = vQuick[+b.getAttribute('data-vq')];
+    if (q) runAction(q.act);
+  });
+
+  function vHas(t, keys){ for (var i = 0; i < keys.length; i++) if (t.indexOf(keys[i]) !== -1) return true; return false; }
+
+  /* the single point where a reply is chosen — the live hook (§19) seats here */
+  function valetAnswer(raw){
+    var text = (raw || '').trim();
+    if (!text) return;
+    userSay(text);
+    /* VALET_LIVE is null: the local engine answers. A seated live model
+       would be consulted at exactly this point, on these same cards. */
+    var t = ' ' + text.toLowerCase().replace(/’/g, "'") + ' ';
+
+    if (vArmed) {
+      vArmed = false; syncCompose();
+      if (text.length >= 3) {
+        notes.unshift({ body: text, name: 'A visitor', ts: Date.now(), hearts: 0, hearted: false, kind: 'critique' });
+        save(notes); renderNotes();
+        valetSay('Kept — thank you. Your critique is saved with the guestbook on this device, marked as critique. Like the notes, it travels when the guestbook intake is built; until then it lives here, and nowhere else. Speaking it was yours to do — nothing is owed beyond it.', vRoleById('critique').quick());
+      } else {
+        vArmed = true; syncCompose();
+        valetSay('A few words more, and it keeps. The floor is still yours — write it in the line below.', [
+          { label:'Never mind — back to the rooms', act:{ t:'role', id:'greeter' } }
+        ]);
+      }
+      return;
+    }
+
+    /* identity first — the standing line, answered plainly */
+    if (vHas(t, ['are you aaniyah', 'is this aaniyah', 'are you her', 'am i talking to aaniyah', 'you aaniyah'])) {
+      valetSay('A guide built into this OS — it knows this house; it is not Aaniyah.', vQuick);
+      return;
+    }
+    if (vHas(t, ['are you ai', 'are you an ai', 'are you a robot', 'are you real', 'are you live', 'are you human', 'chatgpt', 'live model'])) {
+      valetSay('No — I’m a guide built into this page: the house’s own cards, answered right here on your device. No live model is connected to me today; what I know is this house.', vQuick);
+      return;
+    }
+    /* money and terms — the human door, always */
+    if (text.indexOf('$') !== -1 || vHas(t, ['licens', 'price', 'cost', 'how much', 'booking', 'fees', ' fee ', 'sync placement', 'hire her', 'purchase'])) {
+      setRoleSilent('inquiry');
+      valetSay('That road runs to the label. The Valet quotes no prices and makes no promises — terms are quoted by scope, by the label itself, through Mail: sales@leasethebox.com. I collect nothing here.', vRoleById('inquiry').quick());
+      return;
+    }
+    /* critique — her seat */
+    if (vHas(t, ['critique', 'feedback', 'review', 'opinion', 'suggestion', 'my thoughts', 'i think', 'honestly'])) {
+      setRole('critique', false);
+      vArmed = true; syncCompose();
+      valetSay('This is her seat — critique and open dialogue. Say it plainly, right here in the line below, and Send keeps it: saved with the guestbook on this device, marked as critique, for her ears in her time.', vRoleById('critique').quick());
+      return;
+    }
+    /* her works */
+    for (var wi = 0; wi < V_WORKS.length; wi++) {
+      if (vHas(t, V_WORKS[wi].keys)) { workAnswer(V_WORKS[wi], true); return; }
+    }
+    /* the wardrobe — historic treasury */
+    if (vHas(t, ['wardrobe', 'outfit', 'wearing', 'headwrap', 'veil', 'earrings', 'necklace', 'her look', 'the look', 'icon', 'treasury', 'historic'])) {
+      setRoleSilent('treasury');
+      valetSay(vRoleById('treasury').greet, vRoleById('treasury').quick());
+      return;
+    }
+    /* the guestbook + hearts */
+    if (vHas(t, ['guestbook', 'leave a note', 'write a note', 'heart', 'testimonial', 'kind word', 'sign the'])) {
+      setRoleSilent('guestbook');
+      valetSay(vRoleById('guestbook').greet, vRoleById('guestbook').quick());
+      return;
+    }
+    /* press */
+    if (vHas(t, ['press', 'article', 'written about', 'newspaper', 'repeatable'])) {
+      valetSay('The press room — seven pieces from Repeatable Press, each one opening here, inside the OS.', vRoleById('doors').quick());
+      goSheet('press');
+      return;
+    }
+    /* doors */
+    for (var di = 0; di < V_DOORS.length; di++) {
+      if (vHas(t, V_DOORS[di].keys)) { doorAnswer(V_DOORS[di], true); return; }
+    }
+    /* mail */
+    if (vHas(t, ['email', 'mail', 'write to', 'contact', 'message the label'])) {
+      valetSay('The Mail room — write it there, and your own mail app carries it to the label: sales@leasethebox.com. Nothing is collected by this page.', vRoleById('inquiry').quick());
+      goSheet('mail');
+      return;
+    }
+    /* who / what is this house */
+    if (vHas(t, ['who is', "who's", 'what is this', 'where am i', 'about her', 'tell me about'])) {
+      valetSay('Aaniyah. — founder and CEO of Sweet Vanilla Records, New Orleans; R&B and soul. This OS is her front porch: the music, the films, the photographs, the press, and the guestbook.', vRoleById('greeter').quick());
+      return;
+    }
+    if (vHas(t, ['thank', 'appreciated'])) {
+      valetSay('You’re welcome here — that’s the truth of this house. Stay a while; the session is always in session.', vQuick);
+      return;
+    }
+    if (vHas(t, ['help', 'menu', 'rooms', 'what can you', 'options', 'guide me']) ||
+        /^(hi|hello|hey|good morning|good afternoon|good evening)\b/.test(text.toLowerCase())) {
+      setRole('greeter', true);
+      return;
+    }
+    /* fallback — the right room, never an invented fact */
+    valetSay('That one isn’t in my cards — I know this house, not the whole world. But I can take you anywhere in it:', vQuick.concat([
+      { label:'Show me everything', act:{ t:'role', id:'greeter' } }
+    ]));
+  }
+  function setRoleSilent(id){ vRole = id; renderChips(); }
+
+  document.getElementById('valetSend').addEventListener('click', function(){
+    var v = vInput.value; vInput.value = ''; valetAnswer(v);
+  });
+  vInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') { var v = vInput.value; vInput.value = ''; valetAnswer(v); } });
+
+  function valetGreet(){
+    if (vGreeted) return;
+    vGreeted = true;
+    setRole('greeter', true);
+  }
+  document.getElementById('valetBell').addEventListener('click', valetGreet);
+  document.getElementById('lockValet').addEventListener('click', function(){
+    unlock(); openSheet('valet'); valetGreet();
+  });
+  renderChips();
 
   /* ---------- mail (mailto — visitor's own mail app) ---------- */
   document.getElementById('mailSend').addEventListener('click', function(){
