@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaniyah. — Live Feed · Sweet Vanilla Records</title>
+<meta name="description" content="The Sweet Vanilla Records live feed: Aaniyah.'s OS is live, her most-watched video plays at the top, and the Valet is inside.">
+<!--
+  LIVE FEED v1 — Sweet Vanilla Records (2026-10-26). A standing promotional page, refreshed with each
+  label report. Built from the public layer of the Monday label report (2026-10-26) only.
+-->
+<style>
+  :root{
+    --deep:#17100b; --deep2:#100b07; --ink:#2a1d11; --gold:#c9a24b; --gold-soft:#e3c878; --gold-deep:#8a6a24;
+    --cream:#f6efe1; --paper:#fffaf0;
+    --serif:"Didot","Bodoni MT","Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--sans); color:var(--cream);
+    background:
+      radial-gradient(90% 55% at 50% -5%, rgba(201,162,75,.20), rgba(201,162,75,0) 60%),
+      radial-gradient(70% 45% at 50% 108%, rgba(138,106,36,.16), rgba(138,106,36,0) 60%),
+      var(--deep2);
+    min-height:100vh;
+  }
+  .stage{min-height:100vh; display:grid; place-items:center; padding:30px 12px 22px}
+  .phone{
+    width:min(402px,95vw);
+    background:linear-gradient(160deg,#33302c,#0b0b0d 30%,#1a1a1c 70%,#050505);
+    border-radius:58px; padding:11px;
+    border:1px solid #4a3a1c;
+    box-shadow:0 0 0 2px #000, 0 30px 80px rgba(0,0,0,.75), 0 0 90px rgba(201,162,75,.12);
+  }
+  .screen{
+    position:relative; height:min(792px,88vh); overflow-y:auto; scroll-behavior:smooth;
+    border-radius:47px; scrollbar-width:none;
+    background:
+      radial-gradient(130% 46% at 50% -4%, rgba(227,200,120,.20), rgba(227,200,120,0) 55%),
+      radial-gradient(100% 34% at 50% 104%, rgba(138,106,36,.18), rgba(138,106,36,0) 60%),
+      linear-gradient(178deg,#20150c 0%, var(--deep) 30%, #120c07 100%);
+  }
+  .screen::-webkit-scrollbar{display:none}
+  .statusbar{
+    position:sticky; top:0; z-index:30; display:flex; justify-content:space-between; align-items:center;
+    padding:12px 26px 4px; font-size:12.5px; font-weight:600; letter-spacing:.4px; color:var(--cream);
+    background:linear-gradient(180deg, rgba(23,16,11,.92), rgba(23,16,11,0));
+  }
+  .island{width:86px;height:22px;border-radius:12px;background:#000;margin:0 auto; box-shadow:inset 0 0 0 1px #1c1c1e}
+  .glyphs{letter-spacing:2px; font-size:11px; color:var(--gold-soft)}
+  .pad{padding:6px 20px 26px}
+  .kicker{font-size:10px; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold-soft); text-align:center; margin:8px 0 2px}
+  .osname{
+    font-family:var(--serif); font-size:47px; line-height:1.02; text-align:center; margin:2px 0 0; font-weight:700;
+    background:linear-gradient(100deg,#8a6a24 0%, #e3c878 28%, #fff3cf 50%, #c9a24b 74%, #8a6a24 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+  }
+  .oslabel{text-align:center; font-size:11px; letter-spacing:2.6px; text-transform:uppercase; color:var(--cream); opacity:.85; margin:3px 0 14px}
+  .card{
+    background:rgba(246,239,225,.055); border:1px solid rgba(201,162,75,.38); border-radius:24px;
+    padding:16px 17px; margin:0 0 12px; backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px);
+    box-shadow:inset 0 1px 0 rgba(255,250,240,.10), 0 10px 26px rgba(0,0,0,.35);
+  }
+  .card h3{font-family:var(--serif); font-size:16.5px; margin:0 0 7px; color:var(--gold-soft); font-weight:700}
+  .headline{font-family:var(--serif); font-size:24.5px; line-height:1.14; font-weight:700; color:var(--paper); margin:2px 0 7px}
+  .dateline{font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-soft); margin:0 0 9px}
+  p{font-size:14px; line-height:1.58; margin:0 0 9px; color:var(--cream)}
+  p:last-child{margin-bottom:0}
+  ul{font-size:14px; line-height:1.58; margin:0; padding-left:18px; color:var(--cream)}
+  li{margin:0 0 9px}
+  li:last-child{margin-bottom:0}
+  b{color:var(--paper)}
+  a{color:var(--gold-soft); text-decoration:underline; text-underline-offset:2px}
+  .doorbtn{
+    display:block; text-align:center; text-decoration:none; font-weight:700; font-size:14.5px; color:var(--ink);
+    background:linear-gradient(180deg,#e9d189, var(--gold) 55%, #a8823a); border-radius:15px; padding:12px 10px; margin:0 0 9px;
+    box-shadow:0 6px 16px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,250,240,.65);
+  }
+  .doorbtn small{display:block; font-weight:600; font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; opacity:.75; margin-top:2px}
+  .doorbtn:last-child{margin-bottom:0}
+  .pill{display:inline-block; border:1px solid var(--gold); color:var(--gold-soft); border-radius:999px; padding:0 8px;
+    font-size:9.5px; letter-spacing:1.6px; font-style:normal; font-weight:700; vertical-align:1px; white-space:nowrap}
+  .feeditem{border-top:1px solid rgba(201,162,75,.22); padding:10px 0 2px; margin-top:10px}
+  .feeditem:first-of-type{border-top:none; padding-top:0; margin-top:0}
+  .when{font-size:10px; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold-soft); margin:0 0 3px}
+  .signoff{text-align:center; padding:8px 4px 2px}
+  .signoff .rule{width:56px; height:1px; background:var(--gold); margin:0 auto 12px; opacity:.7}
+  .signoff p{font-size:12px; line-height:1.6; color:var(--cream); opacity:.92; margin:0}
+  .under{max-width:402px; margin:14px auto 0; text-align:center; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold-soft); opacity:.85; padding:0 10px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div>
+    <div class="phone">
+      <div class="screen" id="top">
+        <div class="statusbar"><span>9:41</span><span class="island"></span><span class="glyphs">&#9679;&#9679;&#9679;</span></div>
+        <div class="pad">
+          <p class="kicker">Sweet Vanilla Records</p>
+          <h1 class="osname">Aaniyah.</h1>
+          <p class="oslabel">Live Feed · Monday, October 26, 2026</p>
+
+          <div class="card">
+            <p class="dateline">The Headline</p>
+            <p class="headline">Her OS Is Live</p>
+            <p>Aaniyah.&rsquo;s world, on a phone &mdash; her music, her notes, her doors, and every door stays inside her world. Open it like a phone.</p>
+            <a class="doorbtn" href="http://aos.music-industry.store" target="_blank" rel="noopener">Open Her OS<small>aos.music-industry.store</small></a>
+            <a class="doorbtn" href="http://aaniyah.music-industry.store" target="_blank" rel="noopener">The Second Door<small>aaniyah.music-industry.store</small></a>
+          </div>
+
+          <div class="card">
+            <p class="dateline">Most Watched</p>
+            <h3>&ldquo;December 27, 2025&rdquo;</h3>
+            <p>Her most-watched video &mdash; <b>1,926 views</b> &mdash; now plays at the top of her OS. Tap in, or watch it where it lives:</p>
+            <a class="doorbtn" href="https://www.youtube.com/shorts/Si5IGzJYkSA" target="_blank" rel="noopener">Watch the Video<small>YouTube</small></a>
+          </div>
+
+          <div class="card">
+            <p class="dateline">Inside the OS</p>
+            <h3>The Valet Is Inside</h3>
+            <p>A guide built into her OS &mdash; it knows the house, walks the rooms with you, and takes your notes and your critiques. The Valet is the OS&rsquo;s guide; it is not Aaniyah. Say hello inside.</p>
+          </div>
+
+          <div class="card">
+            <p class="dateline">The Catalog</p>
+            <h3>The Works</h3>
+            <ul>
+              <li><b>&ldquo;Breathe&rdquo;</b> &mdash; her debut single, out now. Official video: 30 views.</li>
+              <li><b>&ldquo;Have It Your Way&rdquo;</b> &mdash; premiered October 23, 2026. 39 views &mdash; the most-watched of her catalog works.</li>
+              <li><b>&ldquo;Live at Snug Harbor&rdquo;</b> &mdash; 37 views.</li>
+              <li><b>&ldquo;Live at Snug Harbor Part 2&rdquo;</b> &mdash; 21 views.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <p class="dateline">The Feed</p>
+            <div class="feeditem">
+              <p class="when">Oct 26 · Most Watched</p>
+              <p>&ldquo;December 27, 2025&rdquo; &mdash; 1,926 views, her most-watched video &mdash; takes the top of her OS.</p>
+            </div>
+            <div class="feeditem">
+              <p class="when">Oct 26 · The Valet</p>
+              <p>The Valet is live inside her OS &mdash; the guide is on duty.</p>
+            </div>
+            <div class="feeditem">
+              <p class="when">Oct 26 · The Word Went Out</p>
+              <p>The announcement reached her side this morning: her OS is live in the world.</p>
+            </div>
+            <div class="feeditem">
+              <p class="when">Oct 26 · The Door</p>
+              <p>Her OS is live at <a href="http://aos.music-industry.store" target="_blank" rel="noopener">aos.music-industry.store</a>.</p>
+            </div>
+            <div class="feeditem">
+              <p class="when">Oct 23 · Premiere</p>
+              <p>&ldquo;Have It Your Way&rdquo; premiered.</p>
+            </div>
+          </div>
+
+          <div class="signoff">
+            <div class="rule"></div>
+            <p><b>Sweet Vanilla Records</b><br>Aaniyah. &mdash; her label, her OS, her doors.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="under">Sweet Vanilla Records · Live Feed</p>
+  </div>
+</div>
+</body>
+</html>
